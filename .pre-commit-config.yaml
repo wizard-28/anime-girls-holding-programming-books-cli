@@ -1,10 +1,58 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: check-ast
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: black
+        name: Format python code
+        description: Automatically format code to follow the black code style
+        types_or: [python, pyi]
+        entry: poetry run black
+        language: system
+      - id: codespell
+        name: Check for misspellings
+        description: Checks for common misspellings in text files
+        types: [text]
+        entry: poetry run codespell
+        args: [
+          --check-hidden,
+          --check-filenames,
+          --builtin,
+          clear,
+          rare,
+          informal,
+          usage,
+          code
+        ]
+        language: system
+      - id: isort
+        name: Sort python imports
+        description: Automatically sort import statements
+        types_or: [cython, pyi, python]
+        entry: poetry run isort
+        language: system
+      - id: pyupgrade
+        name: Check for old python syntax
+        description: Automatically upgrade syntax for newer versions.
+        types: [python]
+        entry: poetry run pyupgrade
+        args: [--py36-plus]
+        language: system
+      - id: mypy
+        name: Type check python code
+        description: Static type checker for Python
+        entry: poetry run mypy
+        language: system
+        types_or: [python, pyi]
