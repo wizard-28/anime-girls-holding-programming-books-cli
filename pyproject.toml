@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "anime-girls-holding-programming-books-cli"
+name = "aghpbc"
 version = "0.1.0"
 description = "A CLI for https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books"
 authors = ["Sourajyoti Basak <wiz28@protonmail.com>"]
