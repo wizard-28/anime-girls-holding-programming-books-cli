@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "anime-girls-holding-programming-books-cli"
+version = "0.1.0"
+description = "A CLI for https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books"
+authors = ["Sourajyoti Basak <wiz28@protonmail.com>"]
+license = "GPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+httpx = "^0.21.3"
+rich = "^11.0.0"
+click = "^8.0.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
